@@ -1,5 +1,28 @@
 students = {}
 
+def get_grade(marks):
+    if marks >= 80:
+        return "A+", 4.00
+    elif marks >= 75:
+        return "A", 3.75
+    elif marks >= 70:
+        return "A-", 3.50
+    elif marks >= 65:
+        return "B+", 3.25
+    elif marks >= 60:
+        return "B", 3.00
+    elif marks >= 55:
+        return "B-", 2.75
+    elif marks >= 50:
+        return "C+", 2.50
+    elif marks >= 45:
+        return "C", 2.25
+    elif marks >= 40:
+        return "D", 2.00
+    else:
+        return "F", 0.00
+
+
 def add_student():
     name = input("Enter student name: ")
     students[name] = {}
@@ -23,7 +46,8 @@ def view_student():
 
     print(f"\n--- Record for {name} ---")
     for subject, marks in students[name].items():
-        print(f"{subject}: {marks}")
+        letter, point = get_grade(marks)
+        print(f"{subject}: {marks} -> Grade: {letter} ({point})")
 
 
 while True:
