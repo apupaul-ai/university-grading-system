@@ -28,13 +28,20 @@ def add_student():
     students[name] = {}
 
     while True:
-        subject = input("Enter subject name (type 'done' to finish): ")
-        if subject.lower() == "done":
+        semester = input("Enter semester name (type 'done' to finish): ")
+        if semester.lower() == "done":
             break
-        marks = float(input(f"Enter marks for {subject}: "))
-        students[name][subject] = marks
 
-    print(f"{name} added successfully with {len(students[name])} subject(s)!")
+        students[name][semester] = {}
+
+        while True:
+            subject = input("Enter subject name (type 'done' to finish semester): ")
+            if subject.lower() == "done":
+                break
+            marks = float(input(f"Enter marks for {subject}: "))
+            students[name][semester][subject] = marks
+
+    print(f"{name} added successfully!")
 
 
 def view_student():
@@ -45,9 +52,28 @@ def view_student():
         return
 
     print(f"\n--- Record for {name} ---")
-    for subject, marks in students[name].items():
-        letter, point = get_grade(marks)
-        print(f"{subject}: {marks} -> Grade: {letter} ({point})")
+
+    total_points = 0
+    total_subjects = 0
+
+    for semester, subjects in students[name].items():
+        print(f"\n{semester}:")
+        semester_points = 0
+        semester_subject_count = 0
+
+        for subject, marks in subjects.items():
+            letter, point = get_grade(marks)
+            print(f"  {subject}: {marks} -> Grade: {letter} ({point})")
+            semester_points += point
+            semester_subject_count += 1
+            total_points += point
+            total_subjects += 1
+
+        semester_gpa = semester_points / semester_subject_count
+        print(f"  Semester GPA: {semester_gpa:.2f}")
+
+    cgpa = total_points / total_subjects
+    print(f"\nOverall CGPA: {cgpa:.2f}")
 
 
 while True:
