@@ -76,19 +76,57 @@ def view_student():
     print(f"\nOverall CGPA: {cgpa:.2f}")
 
 
+def delete_student():
+    name = input("Enter student name to delete: ")
+
+    if name not in students:
+        print("Student not found.")
+        return
+
+    del students[name]
+    print(f"{name} has been deleted.")
+
+
+def update_marks():
+    name = input("Enter student name: ")
+    if name not in students:
+        print("Student not found.")
+        return
+
+    semester = input("Enter semester name: ")
+    if semester not in students[name]:
+        print("Semester not found.")
+        return
+
+    subject = input("Enter subject name: ")
+    if subject not in students[name][semester]:
+        print("Subject not found.")
+        return
+
+    new_marks = float(input(f"Enter new marks for {subject}: "))
+    students[name][semester][subject] = new_marks
+    print(f"Marks updated successfully! {subject} is now {new_marks}.")
+
+
 while True:
     print("\n--- University Grading System ---")
     print("1. Add Student")
     print("2. View Student")
-    print("3. Exit")
+    print("3. Delete Student")
+    print("4. Update Marks")
+    print("5. Exit")
 
-    choice = input("Choose an option (1-3): ")
+    choice = input("Choose an option (1-5): ")
 
     if choice == "1":
         add_student()
     elif choice == "2":
         view_student()
     elif choice == "3":
+        delete_student()
+    elif choice == "4":
+        update_marks()
+    elif choice == "5":
         print("Thank you!")
         break
     else:
