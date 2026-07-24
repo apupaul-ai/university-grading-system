@@ -23,6 +23,18 @@ def get_grade(marks):
         return "F", 0.00
 
 
+def get_valid_marks(subject):
+    while True:
+        try:
+            marks = float(input(f"Enter marks for {subject}: "))
+            if marks < 0 or marks > 100:
+                print("Error! Marks must be between 0 and 100. Try again.")
+                continue
+            return marks
+        except ValueError:
+            print("Error! Please enter a valid number.")
+
+
 def add_student():
     name = input("Enter student name: ")
     students[name] = {}
@@ -38,7 +50,7 @@ def add_student():
             subject = input("Enter subject name (type 'done' to finish semester): ")
             if subject.lower() == "done":
                 break
-            marks = float(input(f"Enter marks for {subject}: "))
+            marks = get_valid_marks(subject)
             students[name][semester][subject] = marks
 
     print(f"{name} added successfully!")
@@ -103,7 +115,7 @@ def update_marks():
         print("Subject not found.")
         return
 
-    new_marks = float(input(f"Enter new marks for {subject}: "))
+    new_marks = get_valid_marks(subject)
     students[name][semester][subject] = new_marks
     print(f"Marks updated successfully! {subject} is now {new_marks}.")
 
