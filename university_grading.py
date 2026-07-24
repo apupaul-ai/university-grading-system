@@ -120,15 +120,46 @@ def update_marks():
     print(f"Marks updated successfully! {subject} is now {new_marks}.")
 
 
+def show_ranking():
+    if not students:
+        print("No students added yet.")
+        return
+
+    cgpa_list = []
+
+    for name in students:
+        total_points = 0
+        total_subjects = 0
+
+        for semester, subjects in students[name].items():
+            for subject, marks in subjects.items():
+                letter, point = get_grade(marks)
+                total_points += point
+                total_subjects += 1
+
+        if total_subjects > 0:
+            cgpa = total_points / total_subjects
+            cgpa_list.append((name, cgpa))
+
+    sorted_list = sorted(cgpa_list, key=lambda x: x[1], reverse=True)
+
+    print("\n--- Class Ranking ---")
+    rank = 1
+    for name, cgpa in sorted_list:
+        print(f"{rank}. {name} - CGPA: {cgpa:.2f}")
+        rank += 1
+
+
 while True:
     print("\n--- University Grading System ---")
     print("1. Add Student")
     print("2. View Student")
     print("3. Delete Student")
     print("4. Update Marks")
-    print("5. Exit")
+    print("5. Show Class Ranking")
+    print("6. Exit")
 
-    choice = input("Choose an option (1-5): ")
+    choice = input("Choose an option (1-6): ")
 
     if choice == "1":
         add_student()
@@ -139,6 +170,8 @@ while True:
     elif choice == "4":
         update_marks()
     elif choice == "5":
+        show_ranking()
+    elif choice == "6":
         print("Thank you!")
         break
     else:
