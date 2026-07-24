@@ -1,4 +1,21 @@
+import json
+
 students = {}
+
+
+def save_data():
+    with open("students.json", "w") as file:
+        json.dump(students, file)
+
+
+def load_data():
+    global students
+    try:
+        with open("students.json", "r") as file:
+            students = json.load(file)
+    except FileNotFoundError:
+        students = {}
+
 
 def get_grade(marks):
     if marks >= 80:
@@ -54,6 +71,7 @@ def add_student():
             students[name][semester][subject] = marks
 
     print(f"{name} added successfully!")
+    save_data()
 
 
 def view_student():
@@ -97,6 +115,7 @@ def delete_student():
 
     del students[name]
     print(f"{name} has been deleted.")
+    save_data()
 
 
 def update_marks():
@@ -118,6 +137,7 @@ def update_marks():
     new_marks = get_valid_marks(subject)
     students[name][semester][subject] = new_marks
     print(f"Marks updated successfully! {subject} is now {new_marks}.")
+    save_data()
 
 
 def show_ranking():
@@ -149,6 +169,8 @@ def show_ranking():
         print(f"{rank}. {name} - CGPA: {cgpa:.2f}")
         rank += 1
 
+
+load_data()
 
 while True:
     print("\n--- University Grading System ---")
