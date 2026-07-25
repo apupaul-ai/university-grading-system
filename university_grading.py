@@ -52,6 +52,18 @@ def get_valid_marks(subject):
             print("Error! Please enter a valid number.")
 
 
+def get_valid_credit(subject):
+    while True:
+        try:
+            credit = float(input(f"Enter credit hours for {subject}: "))
+            if credit <= 0:
+                print("Error! Credit hours must be greater than 0. Try again.")
+                continue
+            return credit
+        except ValueError:
+            print("Error! Please enter a valid number.")
+
+
 def add_student():
     name = input("Enter student name: ")
     students[name] = {}
@@ -68,7 +80,8 @@ def add_student():
             if subject.lower() == "done":
                 break
             marks = get_valid_marks(subject)
-            students[name][semester][subject] = marks
+            credit = get_valid_credit(subject)
+            students[name][semester][subject] = {"marks": marks, "credit": credit}
 
     print(f"{name} added successfully!")
     save_data()
@@ -83,26 +96,28 @@ def view_student():
 
     print(f"\n--- Record for {name} ---")
 
-    total_points = 0
-    total_subjects = 0
+    total_weighted_points = 0
+    total_credits = 0
 
     for semester, subjects in students[name].items():
         print(f"\n{semester}:")
-        semester_points = 0
-        semester_subject_count = 0
+        semester_weighted_points = 0
+        semester_credits = 0
 
-        for subject, marks in subjects.items():
+        for subject, data in subjects.items():
+            marks = data["marks"]
+            credit = data["credit"]
             letter, point = get_grade(marks)
-            print(f"  {subject}: {marks} -> Grade: {letter} ({point})")
-            semester_points += point
-            semester_subject_count += 1
-            total_points += point
-            total_subjects += 1
+            print(f"  {subject}: {marks} (Credit: {credit}) -> Grade: {letter} ({point})")
+            semester_weighted_points += point * credit
+            semester_credits += credit
+            total_weighted_points += point * credit
+            total_credits += credit
 
-        semester_gpa = semester_points / semester_subject_count
+        semester_gpa = semester_weighted_points / semester_credits
         print(f"  Semester GPA: {semester_gpa:.2f}")
 
-    cgpa = total_points / total_subjects
+    cgpa = total_weighted_points / total_credits
     print(f"\nOverall CGPA: {cgpa:.2f}")
 
 
@@ -113,18 +128,18 @@ def view_all_students():
 
     print("\n--- All Students ---")
     for name in students:
-        total_points = 0
-        total_subjects = 0
+        total_weighted_points = 0
+        total_credits = 0
 
         for semester, subjects in students[name].items():
-            for subject, marks in subjects.items():
-                letter, point = get_grade(marks)
-                total_points += point
-                total_subjects += 1
+            for subject, data in subjects.items():
+                letter, point = get_grade(data["marks"])
+                total_weighted_points += point * data["credit"]
+                total_credits += data["credit"]
 
-        if total_subjects > 0:
-            cgpa = total_points / total_subjects
-            print(f"{name} - CGPA: {cgpa:.2f} ({total_subjects} subject(s))")
+        if total_credits > 0:
+            cgpa = total_weighted_points / total_credits
+            print(f"{name} - CGPA: {cgpa:.2f}")
 
 
 def delete_student():
@@ -156,7 +171,7 @@ def update_marks():
         return
 
     new_marks = get_valid_marks(subject)
-    students[name][semester][subject] = new_marks
+    students[name][semester][subject]["marks"] = new_marks
     print(f"Marks updated successfully! {subject} is now {new_marks}.")
     save_data()
 
@@ -169,17 +184,17 @@ def show_ranking():
     cgpa_list = []
 
     for name in students:
-        total_points = 0
-        total_subjects = 0
+        total_weighted_points = 0
+        total_credits = 0
 
         for semester, subjects in students[name].items():
-            for subject, marks in subjects.items():
-                letter, point = get_grade(marks)
-                total_points += point
-                total_subjects += 1
+            for subject, data in subjects.items():
+                letter, point = get_grade(data["marks"])
+                total_weighted_points += point * data["credit"]
+                total_credits += data["credit"]
 
-        if total_subjects > 0:
-            cgpa = total_points / total_subjects
+        if total_credits > 0:
+            cgpa = total_weighted_points / total_credits
             cgpa_list.append((name, cgpa))
 
     sorted_list = sorted(cgpa_list, key=lambda x: x[1], reverse=True)
