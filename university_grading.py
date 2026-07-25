@@ -106,6 +106,27 @@ def view_student():
     print(f"\nOverall CGPA: {cgpa:.2f}")
 
 
+def view_all_students():
+    if not students:
+        print("No students added yet.")
+        return
+
+    print("\n--- All Students ---")
+    for name in students:
+        total_points = 0
+        total_subjects = 0
+
+        for semester, subjects in students[name].items():
+            for subject, marks in subjects.items():
+                letter, point = get_grade(marks)
+                total_points += point
+                total_subjects += 1
+
+        if total_subjects > 0:
+            cgpa = total_points / total_subjects
+            print(f"{name} - CGPA: {cgpa:.2f} ({total_subjects} subject(s))")
+
+
 def delete_student():
     name = input("Enter student name to delete: ")
 
@@ -173,28 +194,34 @@ def show_ranking():
 load_data()
 
 while True:
-    print("\n--- University Grading System ---")
+    print("\n" + "=" * 40)
+    print("     UNIVERSITY GRADING SYSTEM")
+    print("=" * 40)
     print("1. Add Student")
     print("2. View Student")
-    print("3. Delete Student")
-    print("4. Update Marks")
-    print("5. Show Class Ranking")
-    print("6. Exit")
+    print("3. View All Students")
+    print("4. Delete Student")
+    print("5. Update Marks")
+    print("6. Show Class Ranking")
+    print("7. Exit")
+    print("=" * 40)
 
-    choice = input("Choose an option (1-6): ")
+    choice = input("Choose an option (1-7): ")
 
     if choice == "1":
         add_student()
     elif choice == "2":
         view_student()
     elif choice == "3":
-        delete_student()
+        view_all_students()
     elif choice == "4":
-        update_marks()
+        delete_student()
     elif choice == "5":
-        show_ranking()
+        update_marks()
     elif choice == "6":
-        print("Thank you!")
+        show_ranking()
+    elif choice == "7":
+        print("Thank you for using the University Grading System!")
         break
     else:
-        print("Invalid choice!")
+        print("Invalid choice! Please select 1-7.")
