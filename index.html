@@ -32,7 +32,6 @@
   }
   .container { max-width: 600px; margin: 0 auto; padding: 0 14px; }
 
-  /* ---- Masthead banner ---- */
   .masthead {
     background: var(--navy);
     background-image: radial-gradient(circle at 15% 20%, rgba(201,162,39,0.12), transparent 45%),
@@ -51,68 +50,30 @@
   .masthead::before { top: 8px; }
   .masthead::after { bottom: 8px; }
 
-  .seal {
-    width: 52px; height: 52px; margin: 0 auto 12px;
-    animation: sealPop 0.7s cubic-bezier(.34,1.56,.64,1) 0.15s both;
-  }
+  .seal { width: 52px; height: 52px; margin: 0 auto 12px; animation: sealPop 0.7s cubic-bezier(.34,1.56,.64,1) 0.15s both; }
 
   .masthead .eyebrow {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 10.5px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold-bright);
-    display: block;
-    margin-bottom: 8px;
+    font-family: 'Roboto Mono', monospace; font-size: 10.5px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold-bright); display: block; margin-bottom: 8px;
   }
-  .masthead h1 {
-    font-family: 'Fraunces', serif;
-    font-size: 27px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.3px;
-  }
-  .masthead p {
-    font-size: 12.5px;
-    color: rgba(255,255,255,0.6);
-    margin-top: 6px;
-    font-style: italic;
-  }
+  .masthead h1 { font-family: 'Fraunces', serif; font-size: 27px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+  .masthead p { font-size: 12.5px; color: rgba(255,255,255,0.6); margin-top: 6px; font-style: italic; }
 
   .content-wrap { padding-top: 18px; animation: fadeSlideUp 0.5s ease 0.1s both; }
 
   .tabs { display: flex; gap: 4px; margin-bottom: 16px; background: #fff; border: 1px solid var(--paper-line); border-radius: 8px; padding: 4px; box-shadow: 0 1px 3px rgba(22,35,63,0.06); }
-  .tab-btn {
-    flex: 1; padding: 9px; border: none; border-radius: 6px;
-    background: transparent; font-family: 'Inter'; font-size: 12.5px; font-weight: 600;
-    letter-spacing: 0.2px; cursor: pointer; color: var(--ink-soft);
-    transition: background 0.18s, color 0.18s;
-  }
+  .tab-btn { flex: 1; padding: 9px; border: none; border-radius: 6px; background: transparent; font-family: 'Inter'; font-size: 12.5px; font-weight: 600; letter-spacing: 0.2px; cursor: pointer; color: var(--ink-soft); transition: background 0.18s, color 0.18s; }
   .tab-btn:hover { color: var(--navy); }
   .tab-btn.active { background: var(--navy); color: var(--gold-soft); }
 
-  .card {
-    background: #fff; border: 1px solid var(--paper-line); border-radius: 10px;
-    padding: 20px; margin-bottom: 14px;
-    box-shadow: 0 1px 3px rgba(22,35,63,0.05);
-    animation: fadeIn 0.4s ease both;
-  }
+  .card { background: #fff; border: 1px solid var(--paper-line); border-radius: 10px; padding: 20px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(22,35,63,0.05); animation: fadeIn 0.4s ease both; }
   .hidden { display: none !important; }
 
-  .section-label {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--gold); font-weight: 600; margin-bottom: 6px;
-    display: flex; align-items: center; gap: 6px;
-  }
+  .section-label { font-family: 'Roboto Mono', monospace; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
   .section-label::after { content: ""; flex: 1; height: 1px; background: var(--paper-line); }
 
   label { font-size: 12.5px; color: var(--ink-soft); display: block; margin-bottom: 5px; font-weight: 500; }
-  input[type="text"], input[type="number"] {
-    width: 100%; padding: 9px 11px; border: 1px solid var(--paper-line); border-radius: 6px;
-    font-size: 14px; margin-bottom: 12px; font-family: 'Inter'; background: var(--paper);
-    transition: border-color 0.15s, background 0.15s;
-  }
+  input[type="text"], input[type="number"] { width: 100%; padding: 9px 11px; border: 1px solid var(--paper-line); border-radius: 6px; font-size: 14px; margin-bottom: 12px; font-family: 'Inter'; background: var(--paper); transition: border-color 0.15s, background 0.15s; }
   input:focus { outline: none; border-color: var(--gold); background: #fff; }
 
   .semester-block { background: var(--paper); border: 1px solid var(--paper-line); border-radius: 8px; padding: 13px; margin-bottom: 12px; }
@@ -121,8 +82,10 @@
   .link-btn { background: none; border: none; color: var(--navy); font-size: 12px; font-weight: 600; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 2px; }
   .link-btn.danger { color: var(--red); }
 
-  .subject-row { display: grid; grid-template-columns: 1fr 72px 24px; gap: 6px; margin-bottom: 6px; align-items: center; }
-  .subject-row input { margin-bottom: 0; }
+  .subject-row-labels { display: grid; grid-template-columns: 1fr 62px 62px 24px; gap: 6px; margin-bottom: 4px; }
+  .subject-row-labels span { font-size: 10px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.5px; }
+  .subject-row { display: grid; grid-template-columns: 1fr 62px 62px 24px; gap: 6px; margin-bottom: 6px; align-items: center; }
+  .subject-row input { margin-bottom: 0; padding: 8px 8px; }
 
   .btn { border: none; border-radius: 6px; padding: 11px; font-size: 13.5px; font-weight: 600; cursor: pointer; font-family: 'Inter'; letter-spacing: 0.2px; transition: transform 0.12s, background 0.15s; }
   .btn:active { transform: scale(0.98); }
@@ -133,23 +96,13 @@
   .btn-danger { background: #FBEEEC; color: var(--red); width: 100%; }
   .btn-danger:hover { background: #F6DEDA; }
 
-  .student-item {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 13px 14px; border: 1px solid var(--paper-line); border-radius: 8px; margin-bottom: 8px; cursor: pointer;
-    background: #fff; transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
-    border-left: 3px solid transparent;
-  }
+  .student-item { display: flex; justify-content: space-between; align-items: center; padding: 13px 14px; border: 1px solid var(--paper-line); border-radius: 8px; margin-bottom: 8px; cursor: pointer; background: #fff; transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s; border-left: 3px solid transparent; }
   .student-item:hover { border-left-color: var(--gold); transform: translateX(2px); box-shadow: 0 2px 8px rgba(22,35,63,0.08); }
   .student-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 15px; color: var(--navy); }
   .student-sub { font-size: 11.5px; color: var(--ink-soft); margin-top: 1px; }
   .student-cgpa { font-family: 'Roboto Mono', monospace; font-size: 15px; color: var(--navy); font-weight: 600; background: var(--gold-soft); padding: 3px 9px; border-radius: 5px; }
 
-  .rank-badge {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 26px; height: 26px; border-radius: 50%;
-    background: var(--paper); border: 1px solid var(--paper-line); color: var(--ink-soft);
-    font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 600; margin-right: 10px;
-  }
+  .rank-badge { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--paper); border: 1px solid var(--paper-line); color: var(--ink-soft); font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 600; margin-right: 10px; }
   .rank-badge.gold { background: linear-gradient(145deg, var(--gold-bright), var(--gold)); color: var(--navy-deep); border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,162,39,0.18); }
 
   .empty-msg { font-size: 13px; color: var(--ink-soft); text-align: center; padding: 26px 0; font-style: italic; }
@@ -161,27 +114,20 @@
   .semester-result span { font-family: 'Roboto Mono', monospace; font-size: 12px; color: var(--ink-soft); }
   .subject-line { font-size: 12px; color: var(--ink-soft); }
 
-  .cgpa-card {
-    margin-top: 14px; background: var(--navy);
-    background-image: radial-gradient(circle at 20% 20%, rgba(201,162,39,0.15), transparent 50%);
-    border-radius: 8px; padding: 18px; text-align: center; position: relative; overflow: hidden;
-  }
+  .cgpa-card { margin-top: 14px; background: var(--navy); background-image: radial-gradient(circle at 20% 20%, rgba(201,162,39,0.15), transparent 50%); border-radius: 8px; padding: 18px; text-align: center; position: relative; overflow: hidden; }
   .cgpa-card .label { font-family: 'Roboto Mono', monospace; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 4px; }
   .cgpa-card .value { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; color: #fff; }
+  .cgpa-card .sub-note { font-size: 10.5px; color: rgba(255,255,255,0.5); margin-top: 4px; }
 
-  .edit-row { display: grid; grid-template-columns: 1fr 66px 56px; gap: 6px; align-items: center; margin-bottom: 7px; }
-  .edit-row input { margin-bottom: 0; }
+  .edit-row { display: grid; grid-template-columns: 1fr 55px 55px 56px; gap: 6px; align-items: center; margin-bottom: 7px; }
+  .edit-row input { margin-bottom: 0; padding: 7px 8px; }
   .save-mark-btn { background: var(--gold-soft); color: var(--navy-deep); border: none; border-radius: 6px; padding: 7px; font-size: 11.5px; font-weight: 700; cursor: pointer; }
   .save-mark-btn:hover { background: var(--gold-bright); }
 
   .error-msg { color: var(--red); font-size: 12.5px; margin-top: 6px; }
   .success-msg { color: var(--green); font-size: 12.5px; margin-top: 6px; font-weight: 600; }
 
-  footer {
-    text-align: center; margin-top: 8px; padding: 18px 0 0;
-    font-family: 'Roboto Mono', monospace; font-size: 11px; letter-spacing: 1.5px;
-    color: var(--ink-soft); text-transform: uppercase;
-  }
+  footer { text-align: center; margin-top: 8px; padding: 18px 0 0; font-family: 'Roboto Mono', monospace; font-size: 11px; letter-spacing: 1.5px; color: var(--ink-soft); text-transform: uppercase; }
   footer span { color: var(--gold); font-weight: 600; }
 
   @keyframes fadeSlideDown { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: translateY(0); } }
@@ -189,9 +135,7 @@
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes sealPop { from { opacity: 0; transform: scale(0.5) rotate(-8deg); } to { opacity: 1; transform: scale(1) rotate(0deg); } }
 
-  @media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; transition: none !important; }
-  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
@@ -204,7 +148,7 @@
   </svg>
   <span class="eyebrow">Academic Records &middot; Est. 2026</span>
   <h1>University Grading System</h1>
-  <p>Semester GPA &amp; cumulative CGPA on a 4.0 scale</p>
+  <p>Credit-weighted GPA &amp; CGPA on a 4.0 scale</p>
 </div>
 
 <div class="container">
@@ -247,12 +191,12 @@
 </div>
 
 <script>
-let students = JSON.parse(localStorage.getItem('gradingStudents') || '{}');
+let students = JSON.parse(localStorage.getItem('gradingStudentsV2') || '{}');
 let semesterCount = 0;
 let subjectCounters = {};
 
 function persist() {
-  localStorage.setItem('gradingStudents', JSON.stringify(students));
+  localStorage.setItem('gradingStudentsV2', JSON.stringify(students));
 }
 
 function switchTab(tab) {
@@ -260,8 +204,7 @@ function switchTab(tab) {
   document.querySelector(`.tab-btn[data-tab="${tab}"]`).classList.add('active');
   ['add', 'list', 'rank'].forEach(t => document.getElementById('tab-' + t).classList.add('hidden'));
   document.getElementById('detailPanel').classList.add('hidden');
-  const target = document.getElementById('tab-' + tab);
-  target.classList.remove('hidden');
+  document.getElementById('tab-' + tab).classList.remove('hidden');
   if (tab === 'list') renderStudentList();
   if (tab === 'rank') renderRanking();
 }
@@ -276,6 +219,9 @@ function addSemester() {
     <div class="semester-header">
       <span>Semester ${semId}</span>
       <button class="link-btn danger" onclick="document.getElementById('semester-${semId}').remove()">Remove</button>
+    </div>
+    <div class="subject-row-labels">
+      <span>Subject</span><span>Marks</span><span>Credit</span><span></span>
     </div>
     <div id="subjects-${semId}"></div>
     <button class="link-btn" onclick="addSubject(${semId})">+ Add subject</button>
@@ -293,7 +239,8 @@ function addSubject(semId) {
   row.id = `subject-${semId}-${subId}`;
   row.innerHTML = `
     <input type="text" placeholder="Subject name" class="subject-name">
-    <input type="number" placeholder="Marks" class="subject-marks" min="0" max="100">
+    <input type="number" placeholder="0-100" class="subject-marks" min="0" max="100">
+    <input type="number" placeholder="e.g. 3" class="subject-credit" min="0.5" step="0.5">
     <button class="link-btn danger" onclick="document.getElementById('subject-${semId}-${subId}').remove()">&times;</button>
   `;
   document.getElementById('subjects-' + semId).appendChild(row);
@@ -339,21 +286,27 @@ function saveStudent() {
     rows.forEach(row => {
       const subjName = row.querySelector('.subject-name').value.trim();
       const marksVal = row.querySelector('.subject-marks').value.trim();
-      if (!subjName || marksVal === '') return;
+      const creditVal = row.querySelector('.subject-credit').value.trim();
+      if (!subjName || marksVal === '' || creditVal === '') return;
+
       const marks = parseFloat(marksVal);
+      const credit = parseFloat(creditVal);
+
       if (isNaN(marks) || marks < 0 || marks > 100) { hasError = true; return; }
-      subjects[subjName] = marks;
+      if (isNaN(credit) || credit <= 0) { hasError = true; return; }
+
+      subjects[subjName] = { marks, credit };
     });
 
     if (Object.keys(subjects).length > 0) record[semName] = subjects;
   });
 
   if (hasError) {
-    errorDiv.innerHTML = '<p class="error-msg">Marks must be valid numbers between 0 and 100.</p>';
+    errorDiv.innerHTML = '<p class="error-msg">Marks must be 0-100 and credit must be greater than 0.</p>';
     return;
   }
   if (Object.keys(record).length === 0) {
-    errorDiv.innerHTML = '<p class="error-msg">Add at least one subject with marks.</p>';
+    errorDiv.innerHTML = '<p class="error-msg">Add at least one subject with marks and credit.</p>';
     return;
   }
 
@@ -369,24 +322,26 @@ function saveStudent() {
 }
 
 function calculateCGPA(name) {
-  let totalPoints = 0, totalSubjects = 0;
+  let totalWeightedPoints = 0, totalCredits = 0;
   const semesterGPAs = {};
 
   for (const sem in students[name]) {
-    let semPoints = 0, semCount = 0;
+    let semWeighted = 0, semCredits = 0;
     for (const subj in students[name][sem]) {
-      const marks = students[name][sem][subj];
+      const { marks, credit } = students[name][sem][subj];
       const g = getGrade(marks);
-      semPoints += g.point; semCount++;
-      totalPoints += g.point; totalSubjects++;
+      semWeighted += g.point * credit;
+      semCredits += credit;
+      totalWeightedPoints += g.point * credit;
+      totalCredits += credit;
     }
-    semesterGPAs[sem] = semCount > 0 ? semPoints / semCount : 0;
+    semesterGPAs[sem] = semCredits > 0 ? semWeighted / semCredits : 0;
   }
 
   return {
-    cgpa: totalSubjects > 0 ? totalPoints / totalSubjects : 0,
+    cgpa: totalCredits > 0 ? totalWeightedPoints / totalCredits : 0,
     semesterGPAs,
-    subjectCount: totalSubjects
+    totalCredits
   };
 }
 
@@ -400,12 +355,12 @@ function renderStudentList() {
   }
 
   container.innerHTML = names.map(name => {
-    const { cgpa, subjectCount } = calculateCGPA(name);
+    const { cgpa, totalCredits } = calculateCGPA(name);
     return `
       <div class="student-item" onclick="showDetail('${name.replace(/'/g, "\\'")}')">
         <div>
           <div class="student-name">${name}</div>
-          <div class="student-sub">${subjectCount} subject(s) recorded</div>
+          <div class="student-sub">${totalCredits} total credit hour(s)</div>
         </div>
         <div class="student-cgpa">${cgpa.toFixed(2)}</div>
       </div>
@@ -447,14 +402,16 @@ function showDetail(name) {
   for (const sem in students[name]) {
     semHtml += `<div class="semester-result"><strong>${sem}</strong><span>GPA ${semesterGPAs[sem].toFixed(2)}</span></div>`;
     for (const subj in students[name][sem]) {
-      const marks = students[name][sem][subj];
+      const { marks, credit } = students[name][sem][subj];
       const g = getGrade(marks);
       const rowId = `edit-${sem}-${subj}`.replace(/\s/g, '_');
+      const creditId = rowId + '_credit';
       semHtml += `
         <div class="edit-row">
           <span class="subject-line">${subj} &middot; ${g.letter}</span>
-          <input type="number" min="0" max="100" value="${marks}" id="${rowId}">
-          <button class="save-mark-btn" onclick="updateMarks('${name.replace(/'/g,"\\'")}','${sem.replace(/'/g,"\\'")}','${subj.replace(/'/g,"\\'")}','${rowId}')">Save</button>
+          <input type="number" min="0" max="100" value="${marks}" id="${rowId}" title="Marks">
+          <input type="number" min="0.5" step="0.5" value="${credit}" id="${creditId}" title="Credit">
+          <button class="save-mark-btn" onclick="updateMarks('${name.replace(/'/g,"\\'")}','${sem.replace(/'/g,"\\'")}','${subj.replace(/'/g,"\\'")}','${rowId}','${creditId}')">Save</button>
         </div>
       `;
     }
@@ -469,6 +426,7 @@ function showDetail(name) {
     <div class="cgpa-card">
       <div class="label">Overall CGPA</div>
       <div class="value">${cgpa.toFixed(2)}</div>
+      <div class="sub-note">Weighted by credit hours</div>
     </div>
     <button class="btn btn-danger" style="margin-top:14px;" onclick="deleteStudent('${name.replace(/'/g,"\\'")}')">Delete Student</button>
   `;
@@ -480,13 +438,20 @@ function closeDetail() {
   renderStudentList();
 }
 
-function updateMarks(name, sem, subj, rowId) {
+function updateMarks(name, sem, subj, rowId, creditId) {
   const val = parseFloat(document.getElementById(rowId).value);
+  const creditVal = parseFloat(document.getElementById(creditId).value);
+
   if (isNaN(val) || val < 0 || val > 100) {
     alert('Please enter a valid mark between 0 and 100.');
     return;
   }
-  students[name][sem][subj] = val;
+  if (isNaN(creditVal) || creditVal <= 0) {
+    alert('Please enter a valid credit hour greater than 0.');
+    return;
+  }
+
+  students[name][sem][subj] = { marks: val, credit: creditVal };
   persist();
   showDetail(name);
 }
